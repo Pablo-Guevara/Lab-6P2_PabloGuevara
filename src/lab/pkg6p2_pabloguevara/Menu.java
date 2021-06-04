@@ -1,6 +1,8 @@
 package lab.pkg6p2_pabloguevara;
 
-public class Menu extends javax.swing.JFrame {
+import java.io.Serializable;
+
+public class Menu extends javax.swing.JFrame implements Serializable{
 
     public Menu() {
         initComponents();
@@ -41,8 +43,18 @@ public class Menu extends javax.swing.JFrame {
         });
 
         jButton3.setText("Proyectos");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jButton4.setText("Docentes");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -98,14 +110,30 @@ public class Menu extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         ClasesCRUD llamarClasesCRUD = new ClasesCRUD();
         llamarClasesCRUD.setVisible(true);
+        llamarClasesCRUD.cargarCLases();
         setVisible(false);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         AlumnosCRUD llamarAlumnosCRUD = new AlumnosCRUD();
         llamarAlumnosCRUD.setVisible(true);
+        llamarAlumnosCRUD.cargarAlumnos();
         setVisible(false);
+
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        docentesCRUD llamarDocentesCRUD=new docentesCRUD();
+        llamarDocentesCRUD.setVisible(true);
+        llamarDocentesCRUD.cargarDocentes();
+        setVisible(false);
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        ProyectoCRUD llamarProyectoCRUD=new  ProyectoCRUD();
+        llamarProyectoCRUD.setVisible(true);
+        llamarProyectoCRUD.cargarProyectos();
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     public static void main(String args[]) {
 
