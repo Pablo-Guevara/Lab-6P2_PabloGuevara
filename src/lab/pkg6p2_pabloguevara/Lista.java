@@ -2,7 +2,8 @@ package lab.pkg6p2_pabloguevara;
 
 public class Lista {
     private Nodo inicio;
-    private int tam = 0;
+    private int tamDocente = 0;
+    private int tamAlumno = 0;
 
     public Lista() {
     }
@@ -15,11 +16,15 @@ public class Lista {
         return inicio;
     }
 
-    public int getTam() {
-        return tam;
+    public int getTamDocente() {
+        return tamDocente;
+    }
+    
+    public int getTamAlumno() {
+        return tamAlumno;
     }
        
-    public void Agregar(Docente docente) {
+    public void AgregarDocente(Docente docente) {
         Nodo nuevo = new Nodo(docente, null);
         if (inicio == null) {
             inicio = nuevo;
@@ -30,6 +35,20 @@ public class Lista {
             }
             aux.setSiguiente(nuevo);
         }
-        tam++;
+        tamDocente++;
+    }
+    
+    public void AgregarAlumno(Alumno alumno) {
+        Nodo nuevo = new Nodo(alumno, null);
+        if (inicio == null) {
+            inicio = nuevo;
+        } else {
+            Nodo aux = inicio;
+            while (aux.getSiguiente() != null) {
+                aux = aux.getSiguiente();
+            }
+            aux.setSiguiente(nuevo);
+        }
+        tamAlumno++;
     }
 }
