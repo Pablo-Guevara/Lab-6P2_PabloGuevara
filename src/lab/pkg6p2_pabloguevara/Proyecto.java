@@ -1,6 +1,8 @@
 package lab.pkg6p2_pabloguevara;
 
-public class Proyecto {
+import java.io.Serializable;
+
+public class Proyecto implements Serializable{
 
     private String titulo;
     private String descripcion;

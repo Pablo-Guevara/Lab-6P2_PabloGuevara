@@ -1,9 +1,13 @@
 package lab.pkg6p2_pabloguevara;
 
-public class Lista {
+import java.io.Serializable;
+
+public class Lista implements Serializable{
     private Nodo inicio;
     private int tamDocente = 0;
     private int tamAlumno = 0;
+    private int tamClase = 0;
+    private int tamProyecto = 0;
 
     public Lista() {
     }
@@ -22,6 +26,14 @@ public class Lista {
     
     public int getTamAlumno() {
         return tamAlumno;
+    }
+    
+    public int getTamClase() {
+        return tamClase;
+    }
+    
+    public int getTamProyecto() {
+        return tamProyecto;
     }
        
     public void AgregarDocente(Docente docente) {
@@ -63,7 +75,21 @@ public class Lista {
             }
             aux.setSiguiente(nuevo);
         }
-        tamAlumno++;
+        tamClase++;
+    }
+    
+    public void AgregarProyecto(Proyecto proyecto) {
+        Nodo nuevo = new Nodo(proyecto, null);
+        if (inicio == null) {
+            inicio = nuevo;
+        } else {
+            Nodo aux = inicio;
+            while (aux.getSiguiente() != null) {
+                aux = aux.getSiguiente();
+            }
+            aux.setSiguiente(nuevo);
+        }
+        tamProyecto++;
     }
     
     Nodo recorrer2;
@@ -97,6 +123,32 @@ public class Lista {
         return seccionR;
     }
     //FIN CLASE
+    //DOCENTE
+    public String nombreRetornaDocente() {
+        String nombreR;
+        nombreR = recorrer2.getDocente().getNombre();
+        return nombreR;
+    }
+    
+    public String ApellidoRetornaDocente() {
+        String apellidoR;
+        apellidoR = recorrer2.getDocente().getApellido();
+        return apellidoR;
+    }
+    //FIN DOCENTE
+    //PROYECTO
+    public String tituloRetornaProyecto() {
+        String tituloR;
+        tituloR = recorrer2.getProyecto().getTitulo();
+        return tituloR;
+    }
+    
+    public String descripcionRetornaProyecto() {
+        String descripcionR;
+        descripcionR = recorrer2.getProyecto().getDescripcion();
+        return descripcionR;
+    }
+    //FIN PROYECTO
     
     public void siguienteEnLista() {
         recorrer2 = recorrer2.getSiguiente();

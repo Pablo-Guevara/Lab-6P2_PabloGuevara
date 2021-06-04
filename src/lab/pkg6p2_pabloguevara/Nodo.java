@@ -1,9 +1,12 @@
 package lab.pkg6p2_pabloguevara;
 
-public class Nodo {
+import java.io.Serializable;
+
+public class Nodo implements Serializable{
     private Docente docente;
     private Alumno alumno;
     private Clase clase;
+    private Proyecto proyecto;
     private Nodo siguiente;
 
     public Nodo() {
@@ -14,7 +17,10 @@ public class Nodo {
         this.siguiente = siguiente;
     }
 
-    
+    public Nodo(Proyecto proyecto, Nodo siguiente) {
+        this.proyecto = proyecto;
+        this.siguiente = siguiente;
+    }
     
     public Nodo(Alumno alumno, Nodo siguiente) {
         this.alumno = alumno;
@@ -56,5 +62,13 @@ public class Nodo {
 
     public void setClase(Clase clase) {
         this.clase = clase;
+    }
+
+    public Proyecto getProyecto() {
+        return proyecto;
+    }
+
+    public void setProyecto(Proyecto proyecto) {
+        this.proyecto = proyecto;
     }
 }

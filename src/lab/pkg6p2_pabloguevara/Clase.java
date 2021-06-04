@@ -1,6 +1,8 @@
 package lab.pkg6p2_pabloguevara;
 
-public class Clase {
+import java.io.Serializable;
+
+public class Clase implements Serializable{
     private String nombre;
     private String seccion;
     private String código;

@@ -1,8 +1,17 @@
 package lab.pkg6p2_pabloguevara;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-public class ClasesCRUD extends javax.swing.JFrame {
+public class ClasesCRUD extends javax.swing.JFrame implements Serializable{
     Lista listaClases=new Lista();
         private DefaultTableModel tm;
     
@@ -240,6 +249,8 @@ public class ClasesCRUD extends javax.swing.JFrame {
         clase.setNumeroAula(Integer.parseInt(jTextField6.getText()));
         
         listaClases.AgregarClase(clase);
+        guardarClases();
+        JOptionPane.showMessageDialog(null, "Creado exitosamente");
     }//GEN-LAST:event_jToggleButton1ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -250,7 +261,7 @@ public class ClasesCRUD extends javax.swing.JFrame {
             }
         }
         listaClases.asignarNodo();
-        for (int i = 0; i < listaClases.getTamAlumno(); i++) {
+        for (int i = 0; i < listaClases.getTamClase(); i++) {
 
             tm.addRow(new Object[]{listaClases.nombreRetornaClase(), listaClases.seccionRetornaClase()});
             listaClases.siguienteEnLista();
@@ -259,34 +270,49 @@ public class ClasesCRUD extends javax.swing.JFrame {
         jTable1.setModel(tm);
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
+    FileOutputStream fichero2;
+    
+    public void guardarClases() {
+        fichero2 = null;//CREO VARIABLE FICHERO
         try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ClasesCRUD.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ClasesCRUD.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ClasesCRUD.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ClasesCRUD.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
 
-        /* Create and display the form */
+            fichero2 = new FileOutputStream("clases.txt");//Creamos el archivo donde se guarda
+            ObjectOutputStream tuberia1 = new ObjectOutputStream(fichero2);//asignamos los valores al objeto
+            tuberia1.writeObject(listaClases);//Guardamos el objeto
+        } catch (FileNotFoundException ex) {
+            ex.printStackTrace();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        } finally {
+            try {
+                fichero2.close();
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+        }
+    }
+    
+    public void cargarCLases(){
+        FileInputStream ficheroEntrada1 = null;
+        File file1 = new File("clases.txt");
+        try {
+
+            if (file1.exists()) {
+                ficheroEntrada1 = new FileInputStream("clases.txt");
+                ObjectInputStream tuberiaEntrada1 = new ObjectInputStream(ficheroEntrada1);
+                listaClases = (Lista) tuberiaEntrada1.readObject();
+            }
+
+        } catch (FileNotFoundException ex) {
+            ex.printStackTrace();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        } catch (ClassNotFoundException ex) {
+            ex.printStackTrace();
+        }
+    }
+    
+    public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new ClasesCRUD().setVisible(true);

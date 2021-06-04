@@ -1,6 +1,8 @@
 package lab.pkg6p2_pabloguevara;
 
-public class Docente extends Usuario{
+import java.io.Serializable;
+
+public class Docente extends Usuario implements Serializable{
     private String nombre;
     private String apellido;
     private int numeroRegistro;
