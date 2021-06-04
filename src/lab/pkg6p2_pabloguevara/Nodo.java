@@ -3,11 +3,19 @@ package lab.pkg6p2_pabloguevara;
 public class Nodo {
     private Docente docente;
     private Alumno alumno;
+    private Clase clase;
     private Nodo siguiente;
 
     public Nodo() {
     }
 
+    public Nodo(Clase clase, Nodo siguiente) {
+        this.clase = clase;
+        this.siguiente = siguiente;
+    }
+
+    
+    
     public Nodo(Alumno alumno, Nodo siguiente) {
         this.alumno = alumno;
         this.siguiente = siguiente;
@@ -41,6 +49,12 @@ public class Nodo {
     public void setAlumno(Alumno alumno) {
         this.alumno = alumno;
     }
-    
-    
+
+    public Clase getClase() {
+        return clase;
+    }
+
+    public void setClase(Clase clase) {
+        this.clase = clase;
+    }
 }
