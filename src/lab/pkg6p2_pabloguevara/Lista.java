@@ -109,6 +109,17 @@ public class Lista implements Serializable{
         apellidoR = recorrer2.getAlumno().getApellido();
         return apellidoR;
     }
+    
+    public String nombreUsuarioRetornaAlumno() {
+        String nombreUsuarioR;
+        nombreUsuarioR = recorrer2.getAlumno().getNombreUsuario();
+        return nombreUsuarioR;
+    }
+    public String contraseñaRetornaAlumno() {
+        String contraseñaR;
+        contraseñaR = recorrer2.getAlumno().getContraseña();
+        return contraseñaR;
+    }
     //FIN ALUMNO
     //CLASE
     public String nombreRetornaClase() {
@@ -134,6 +145,17 @@ public class Lista implements Serializable{
         String apellidoR;
         apellidoR = recorrer2.getDocente().getApellido();
         return apellidoR;
+    }
+    
+    public String nombreUsuarioRetornaDocente() {
+        String nombreUsuarioR;
+        nombreUsuarioR = recorrer2.getDocente().getNombreUsuario();
+        return nombreUsuarioR;
+    }
+    public String contraseñaRetornaDocente() {
+        String contraseñaR;
+        contraseñaR = recorrer2.getDocente().getContraseña();
+        return contraseñaR;
     }
     //FIN DOCENTE
     //PROYECTO

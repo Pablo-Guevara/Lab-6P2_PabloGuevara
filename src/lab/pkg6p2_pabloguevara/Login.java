@@ -1,5 +1,6 @@
 package lab.pkg6p2_pabloguevara;
 
+import java.io.File;
 import javax.swing.JOptionPane;
 
 public class Login extends javax.swing.JFrame {
@@ -7,6 +8,8 @@ public class Login extends javax.swing.JFrame {
     public Login() {
         initComponents();
         setLocationRelativeTo(null);
+        docentesCRUD llamarDC=new docentesCRUD();
+        llamarDC.cargarDocentes();
     }
 
     @SuppressWarnings("unchecked")
@@ -18,8 +21,8 @@ public class Login extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jPasswordField1 = new javax.swing.JPasswordField();
         jButton1 = new javax.swing.JButton();
+        jTextField2 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -50,22 +53,21 @@ public class Login extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(168, 168, 168))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(60, 60, 60)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel3)
                     .addComponent(jLabel2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jButton1)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 166, Short.MAX_VALUE)
-                        .addComponent(jPasswordField1)))
+                    .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 166, Short.MAX_VALUE)
+                    .addComponent(jTextField2))
                 .addContainerGap(76, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(168, 168, 168))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -78,11 +80,11 @@ public class Login extends javax.swing.JFrame {
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
-                .addGap(47, 47, 47)
+                    .addComponent(jLabel3)
+                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(44, 44, 44)
                 .addComponent(jButton1)
-                .addContainerGap(103, Short.MAX_VALUE))
+                .addContainerGap(106, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -104,13 +106,35 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        if (jTextField1.getText().equals("")  || jPasswordField1.getText().equals("")) {
+        int ingreso=0;
+        docentesCRUD llamarDC=new docentesCRUD();
+        llamarDC.cargarDocentes();
+        File file1 = new File("docentes.txt");
+      
+        if (jTextField1.getText().equals("") || jTextField2.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Por favor rellene todas la casillas");
-        }else{
-            if (jTextField1.getText().equals("admin") && jPasswordField1.getText().equals("1234") ) {
-                Menu llamarMenu=new Menu();
+        } else {
+            if (jTextField1.getText().equals("admin") && jTextField2.getText().equals("1234")) {
+                Menu llamarMenu = new Menu();
                 llamarMenu.setVisible(true);
                 setVisible(false);
+            } else {
+                if (file1.exists()) {
+                    Lista ListaDocentesLogin = new Lista();
+                    llamarDC.cargarDocentes();
+                    ListaDocentesLogin = llamarDC.listaDocentes;
+
+                    ListaDocentesLogin.asignarNodo();
+                    
+                    for (int i = 0; i < ListaDocentesLogin.getTamDocente(); i++) {
+
+                        if (jTextField1.getText().equals(ListaDocentesLogin.nombreUsuarioRetornaDocente()) 
+                                && jTextField2.getText().equals(ListaDocentesLogin.contraseñaRetornaDocente())) {
+                            ingreso=1;
+                        }
+                        ListaDocentesLogin.siguienteEnLista();
+                    }
+                }
             }
         }
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -156,7 +180,7 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
     // End of variables declaration//GEN-END:variables
 }

@@ -25,6 +25,10 @@ public class Docente extends Usuario implements Serializable{
         this.facultad = facultad;
     }
 
+    public Docente(String nombreUsuario, String contraseña) {
+        super(nombreUsuario, contraseña);
+    }
+
     public Docente(String nombre, String apellido, int numeroRegistro, String tituloUniversitario, String tituloPostgrado, int cantVecesImpartClase, String facultad, String nombreUsuario, String contraseña) {
         super(nombreUsuario, contraseña);
         this.nombre = nombre;
