@@ -10,16 +10,17 @@ import java.io.ObjectOutputStream;
 import javax.swing.table.DefaultTableModel;
 
 public class ProyectoCRUD extends javax.swing.JFrame {
-Lista listaProyecto=new Lista();
-private DefaultTableModel tm;
+
+    Lista listaProyecto = new Lista();
+    private DefaultTableModel tm;
 
     public ProyectoCRUD() {
         initComponents();
         PropiedadesTabla();
     }
-    
+
     private void PropiedadesTabla() {
-        String titulos[] = {"Título", "Descripción", "Puntuación", "Tiempo de duración", 
+        String titulos[] = {"Título", "Descripción", "Puntuación", "Tiempo de duración",
             "Cantidad máxima de parcipantes", "Fecha de entrega"};
         tm = new DefaultTableModel(null, titulos);
         jTable1.setRowHeight(400);
@@ -237,18 +238,18 @@ private DefaultTableModel tm;
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        Proyecto proyecto=new Proyecto();
+        Proyecto proyecto = new Proyecto();
         proyecto.setTitulo(jTextField1.getText());
         proyecto.setDescripcion(jTextArea1.getText());
         proyecto.setPuntuacion(Float.parseFloat(jTextField2.getText()));
         proyecto.setTiempoDuracion(jTextField3.getText());
         proyecto.setCantMaxParticipantes(Integer.parseInt(jTextField4.getText()));
         proyecto.setFechaEntrega(jTextField5.getText());
-        
+
         listaProyecto.AgregarProyecto(proyecto);
-        
+
         guardarProyecto();
-        
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -267,7 +268,8 @@ private DefaultTableModel tm;
         jTable1.setRowHeight(100);
         jTable1.setModel(tm);
     }//GEN-LAST:event_jButton2ActionPerformed
-FileOutputStream fichero4;
+    FileOutputStream fichero4;
+
     public void guardarProyecto() {
         fichero4 = null;//CREO VARIABLE FICHERO
         try {
@@ -307,7 +309,7 @@ FileOutputStream fichero4;
             ex.printStackTrace();
         }
     }
-    
+
     public static void main(String args[]) {
 
         java.awt.EventQueue.invokeLater(new Runnable() {

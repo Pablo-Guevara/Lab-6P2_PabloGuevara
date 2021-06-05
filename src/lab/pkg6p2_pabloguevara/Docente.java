@@ -2,14 +2,15 @@ package lab.pkg6p2_pabloguevara;
 
 import java.io.Serializable;
 
-public class Docente extends Usuario implements Serializable{
+public class Docente extends Usuario implements Serializable {
+
     private String nombre;
     private String apellido;
     private int numeroRegistro;
-   private String tituloUniversitario;
-   private  String tituloPostgrado;
-   private  int cantVecesImpartClase;
-   private  String facultad;
+    private String tituloUniversitario;
+    private String tituloPostgrado;
+    private int cantVecesImpartClase;
+    private String facultad;
 
     public Docente() {
         super();
@@ -96,6 +97,4 @@ public class Docente extends Usuario implements Serializable{
         this.facultad = facultad;
     }
 
-    
-    
 }

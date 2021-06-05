@@ -289,7 +289,7 @@ public class docentesCRUD extends javax.swing.JFrame implements Serializable {
         docente.setFacultad(jComboBox1.getSelectedItem().toString());
         docente.setNombreUsuario(jTextField7.getText());
         docente.setContraseña(jTextField8.getText());
-       
+
         listaDocentes.AgregarDocente(docente);
         guardarDocentes();
         JOptionPane.showMessageDialog(null, "Creado exitosamente");

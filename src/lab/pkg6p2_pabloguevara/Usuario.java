@@ -1,6 +1,7 @@
 package lab.pkg6p2_pabloguevara;
 
 public class Usuario {
+
     private String nombreUsuario;
     private String contraseña;
 
@@ -27,6 +28,5 @@ public class Usuario {
     public void setContraseña(String contraseña) {
         this.contraseña = contraseña;
     }
-    
-    
+
 }

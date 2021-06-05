@@ -8,7 +8,7 @@ public class Login extends javax.swing.JFrame {
     public Login() {
         initComponents();
         setLocationRelativeTo(null);
-        docentesCRUD llamarDC=new docentesCRUD();
+        docentesCRUD llamarDC = new docentesCRUD();
         llamarDC.cargarDocentes();
     }
 
@@ -106,11 +106,11 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        int ingreso=0;
-        docentesCRUD llamarDC=new docentesCRUD();
+        int ingreso = 0;
+        docentesCRUD llamarDC = new docentesCRUD();
         llamarDC.cargarDocentes();
         File file1 = new File("docentes.txt");
-      
+
         if (jTextField1.getText().equals("") || jTextField2.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Por favor rellene todas la casillas");
         } else {
@@ -125,12 +125,12 @@ public class Login extends javax.swing.JFrame {
                     ListaDocentesLogin = llamarDC.listaDocentes;
 
                     ListaDocentesLogin.asignarNodo();
-                    
+
                     for (int i = 0; i < ListaDocentesLogin.getTamDocente(); i++) {
 
-                        if (jTextField1.getText().equals(ListaDocentesLogin.nombreUsuarioRetornaDocente()) 
+                        if (jTextField1.getText().equals(ListaDocentesLogin.nombreUsuarioRetornaDocente())
                                 && jTextField2.getText().equals(ListaDocentesLogin.contraseñaRetornaDocente())) {
-                            ingreso=1;
+                            ingreso = 1;
                         }
                         ListaDocentesLogin.siguienteEnLista();
                     }

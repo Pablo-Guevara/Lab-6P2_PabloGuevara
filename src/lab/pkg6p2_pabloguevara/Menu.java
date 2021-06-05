@@ -2,7 +2,7 @@ package lab.pkg6p2_pabloguevara;
 
 import java.io.Serializable;
 
-public class Menu extends javax.swing.JFrame implements Serializable{
+public class Menu extends javax.swing.JFrame implements Serializable {
 
     public Menu() {
         initComponents();
@@ -123,14 +123,14 @@ public class Menu extends javax.swing.JFrame implements Serializable{
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        docentesCRUD llamarDocentesCRUD=new docentesCRUD();
+        docentesCRUD llamarDocentesCRUD = new docentesCRUD();
         llamarDocentesCRUD.setVisible(true);
         llamarDocentesCRUD.cargarDocentes();
         setVisible(false);
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        ProyectoCRUD llamarProyectoCRUD=new  ProyectoCRUD();
+        ProyectoCRUD llamarProyectoCRUD = new ProyectoCRUD();
         llamarProyectoCRUD.setVisible(true);
         llamarProyectoCRUD.cargarProyectos();
     }//GEN-LAST:event_jButton3ActionPerformed
